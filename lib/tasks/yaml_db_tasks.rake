@@ -16,6 +16,7 @@ namespace :db do
 
     desc "Dump contents of database to db/data.extension (defaults to yaml)"
     task :dump => :environment do
+      raise 'use rake db:data:dump_dir'
       format_class = ENV['class'] || "YamlDb::Helper"
       helper = format_class.constantize
       SerializationHelper::Base.new(helper).dump db_dump_data_file helper.extension
